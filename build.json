@@ -1,0 +1,32 @@
+{
+  "variables": {
+    "git_version": "master",
+    "image_name": "",
+    "project_id": "",
+    "source_image_family": "",
+    "ssh_username": "",
+    "zone": ""
+  },
+  "builders": [{
+    "type": "googlecompute",
+    "project_id": "{{user `project_id`}}",
+    "source_image_family": "{{user `source_image_family`}}",
+    "ssh_username": "{{user `ssh_username`}}",
+    "zone": "{{ user `zone`}}",
+    "image_name": "{{user `image_name`}}"
+  }],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "./system/yum-update-all-and-reboot.yml"
+    },
+    {
+      "type": "ansible",
+      "playbook_file": "./redmica_install/install.yml",
+      "extra_arguments": [
+        "--extra-vars", "passenger_swap=true, redmica_git_version=\"{{user `git_version`}}\""
+      ],
+      "galaxy_file": "./redmica_install/roles/requirements.yml"
+    }
+  ]
+}
