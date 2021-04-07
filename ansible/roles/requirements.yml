@@ -1,0 +1,4 @@
+---
+roles:
+  - name: mamono210.locale
+    src: https://github.com/ansible-roles-matsumura/locale.git

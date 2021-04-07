@@ -1,8 +1,10 @@
 {
   "variables": {
-    "git_version": "master",
     "image_name": "",
     "project_id": "",
+    "redmica_git_version": "",
+    "ruby_download_url": "",
+    "ruby_version": "",
     "source_image_family": "",
     "ssh_username": "",
     "zone": ""
@@ -18,13 +20,20 @@
   "provisioners": [
     {
       "type": "ansible",
+      "playbook_file": "./ansible/locale.yml",
+      "galaxy_file": "./ansible/roles/requirements.yml"
+    },
+    {
+      "type": "ansible",
       "playbook_file": "./system/yum-update-all-and-reboot.yml"
     },
     {
       "type": "ansible",
       "playbook_file": "./redmica_install/install.yml",
       "extra_arguments": [
-        "--extra-vars", "passenger_swap=true, redmica_git_version=\"{{user `git_version`}}\""
+        "--extra-vars", "redmica_git_version={{user `redmica_git_version`}}",
+        "--extra-vars", "ruby_download_url={{user `ruby_download_url`}}",
+        "--extra-vars", "ruby_version={{user `ruby_version`}}"
       ],
       "galaxy_file": "./redmica_install/roles/requirements.yml"
     }
