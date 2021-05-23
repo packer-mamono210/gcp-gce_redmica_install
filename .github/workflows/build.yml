@@ -51,7 +51,7 @@ jobs:
           packer build \
           -var "image_name=${IMAGE_NAME}" \
           -var "project_id=buoyant-world-263612" \
-          -var "redmica_git_version=v1.2.1" \
+          -var "redmica_git_version=v1.2.2" \
           -var "ruby_download_url=https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.3.tar.gz" \
           -var "ruby_version=2.7.3" \
           -var "source_image_family=centos-8" \
