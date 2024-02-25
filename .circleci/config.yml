@@ -148,17 +148,6 @@ workflows:
       - packer:
           boot-disk-size: '40'
           context: CLOUD
-          machine-image-name: 'redmica-golden-image-centos-stream8'
-          machine-type: 'n1-standard-1'
-          image-family: 'centos-stream-8'
-          image-project: 'centos-cloud'
-          instance-name: 'packer-redmica-install-centos-stream-8'
-          project-name: 'buoyant-world-263612'
-          service-account: 'packer-mamono210-circleci@buoyant-world-263612.iam.gserviceaccount.com'
-          zone: 'us-central1-a'
-      - packer:
-          boot-disk-size: '40'
-          context: CLOUD
           machine-image-name: 'redmica-golden-image-centos-stream9'
           machine-type: 'n1-standard-1'
           image-family: 'centos-stream-9'
